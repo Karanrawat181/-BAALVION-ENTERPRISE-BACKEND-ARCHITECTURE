@@ -2,7 +2,10 @@ const Router = require('express');
 const router = Router()
 
 // Domain routes will be mounted here later
-// Example: router.use('/commerce', require('../domains/commerce/commerce.routes'));
+
+// Auth routes
+router.use('/auth', require('../modules/auth/auth.routes'));
+
 
 router.get('/', (req, res) => {
   res.json({
