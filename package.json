@@ -1,0 +1,43 @@
+{
+  "name": "-baalvion-enterprise-backend-architecture",
+  "version": "1.0.0",
+  "description": "this is the backend architecture",
+  "main": "index.js",
+  "scripts": {
+  "start": "node src/core/server.js",
+  "dev": "nodemon src/core/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Karanrawat181/-BAALVION-ENTERPRISE-BACKEND-ARCHITECTURE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Karanrawat181/-BAALVION-ENTERPRISE-BACKEND-ARCHITECTURE/issues"
+  },
+  "homepage": "https://github.com/Karanrawat181/-BAALVION-ENTERPRISE-BACKEND-ARCHITECTURE#readme",
+  "dependencies": {
+    "amqplib": "^1.0.3",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.3.2",
+    "helmet": "^8.1.0",
+    "ioredis": "^5.10.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.4.1",
+    "morgan": "^1.10.1",
+    "uuid": "^13.0.0",
+    "winston": "^3.19.0"
+  },
+  "devDependencies": {
+    "eslint": "^10.2.0",
+    "jest": "^30.3.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.2",
+    "supertest": "^7.2.2"
+  }
+}
