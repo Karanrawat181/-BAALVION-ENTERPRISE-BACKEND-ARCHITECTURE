@@ -42,11 +42,11 @@ Base URL: /api/v1
 - [x] Global auth middleware (JWT)
 - [x] Register endpoint
 - [x] Login endpoint
-- [ ] Me endpoint (in progress)
+- [x] Me endpoint (in progress)
 
 ### Coming Soon
-- [ ] Redis caching
-- [ ] RabbitMQ event system
+- [x] Redis caching
+- [x] RabbitMQ event system
 - [ ] Users module
 - [ ] Roles module
 - [ ] Permissions module
