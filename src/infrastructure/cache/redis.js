@@ -1,15 +1,14 @@
+//redis.js — Redis connection
+
 const Redis = require('ioredis');
+const { redisConfig } = require('../../config/cache');
 const logger = require('../../shared/utils/logger');
-const { REDIS_HOST, REDIS_PORT } = require('../../config/env');
 
 let client = null;
 
 const connectRedis = async () => {
   try {
-    client = new Redis({
-      host: REDIS_HOST,
-      port: REDIS_PORT,
-    });
+    client = new Redis(redisConfig);
 
     client.on('connect', () => {
       logger.info('Redis connected successfully');

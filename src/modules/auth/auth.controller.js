@@ -1,5 +1,6 @@
 const { register, login, getMe } = require('./auth.service');
 const logger = require('../../shared/utils/logger');
+const { success } = require('../../shared/response/apiResponse');
 
 const registerUser = async (req, res, next) => {
   try {
@@ -8,11 +9,7 @@ const registerUser = async (req, res, next) => {
 
     const result = await register({ name, email, password, tenantId });
 
-    res.status(201).json({
-      success: true,
-      message: 'User registered successfully',
-      data: result,
-    });
+    return success(res, result, 'User registered successfully', 201);
   } catch (err) {
     logger.error(`Register error: ${err.message}`);
     next(err);
@@ -26,11 +23,7 @@ const loginUser = async (req, res, next) => {
 
     const result = await login(email, password, tenantId);
 
-    res.status(200).json({
-      success: true,
-      message: 'Login successful',
-      data: result,
-    });
+    return success(res, result, 'Login successful', 200);
   } catch (err) {
     logger.error(`Login error: ${err.message}`);
     next(err);
@@ -44,11 +37,7 @@ const getProfile = async (req, res, next) => {
 
     const result = await getMe(userId, tenantId);
 
-    res.status(200).json({
-      success: true,
-      message: 'Profile fetched successfully',
-      data: result,
-    });
+    return success(res, result, 'Profile fetched successfully');
   } catch (err) {
     logger.error(`Get profile error: ${err.message}`);
     next(err);
