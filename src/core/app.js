@@ -4,6 +4,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const { tenantMiddleware } = require('../middleware/tenant.middleware');
 const { errorMiddleware } = require('../middleware/error.middleware');
+const { loggerMiddleware } = require('../middleware/logger.middleware');
 const router = require('./router');
 
 const app = express();
@@ -18,6 +19,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Request logging
 app.use(morgan('dev'));
+
+// Custom logger middleware
+app.use(loggerMiddleware);
 
 // Tenant must be resolved before any route
 app.use(tenantMiddleware);
