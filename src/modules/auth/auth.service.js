@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const { JWT_SECRET, JWT_EXPIRES_IN } = require('../../config/env');
 const { createUser, findUserByEmail, findUserById } = require('./auth.repository');
 const logger = require('../../shared/utils/logger');
+const { events } = require('../../events/producers/eventProducer');
 
 // creates JWT with userId, tenantId, role
 const generateToken = (userId, tenantId, role) => {
@@ -24,6 +25,15 @@ const register = async (userData) => {
 
   // Create new user
   const user = await createUser({ name, email, password, tenantId });
+
+    // Fire user.created event
+  await events.userCreated({
+    userId: user._id,
+    email: user.email,
+    tenantId: user.tenantId,
+    role: user.role,
+  });
+  
   logger.info(`New user registered: ${email} | tenant: ${tenantId}`);
 
   // Generate token
