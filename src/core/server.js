@@ -2,12 +2,12 @@ require('dotenv').config();
 const app = require('./app');
 const logger = require('../shared/utils/logger');
 const { PORT, NODE_ENV } = require('../config/env');
-const { connectDB } = require('../infrastructure/database/mongo');
+const { bootstrap } = require('./bootstrap');
 
 const startServer = async () => {
   try {
-    // Connect to MongoDB first
-    await connectDB();
+   // Initialize all services first
+    await bootstrap();
 
     // Then start the server
     app.listen(PORT, () => {
