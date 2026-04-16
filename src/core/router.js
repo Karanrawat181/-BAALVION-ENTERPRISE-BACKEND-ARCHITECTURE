@@ -6,6 +6,12 @@ const router = Router()
 // Auth routes
 router.use('/auth', require('../modules/auth/auth.routes'));
 
+// Users routes
+router.use('/users', require('../modules/users/users.routes'));
+
+// Tenants routes
+router.use('/tenants', require('../modules/tenants/tenants.routes'));
+
 
 router.get('/', (req, res) => {
   res.json({

@@ -12,6 +12,7 @@ const TTL = {
   PRODUCTS: 60 * 5,        // 5 minutes
   REPORTS: 60 * 10,        // 10 minutes
   CONTENT: 60 * 30,        // 30 minutes
+  TENANT: 60 * 60,         // 1 hour
   DEFAULT: 60 * 5,         // 5 minutes
 };
 

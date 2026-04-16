@@ -1,23 +1,46 @@
 /*
  * tenant.middleware.js
  * Resolves tenantId from hostname on every request
- * Rejects unknown hostnames immediately
+ * Flow: Redis cache → MongoDB → reject if not found
  */
 
-const { TENANT_MAP } = require('../shared/constants/tenants');
 const { AppError } = require('../shared/errors/AppError');
+const { getClient } = require('../infrastructure/cache/redis');
+const { findTenantByDomain } = require('../modules/tenants/tenants.repository');
+const { TTL } = require('../config/cache');
 
-const tenantMiddleware = (req, res, next) => {
-  const hostname = req.hostname;
+const tenantMiddleware = async (req, res, next) => {
+  try {
+    const domain = req.hostname;
+    const redis = getClient();
+    const cacheKey = `tenant:${domain}`;
 
-  const tenant = TENANT_MAP[hostname];
+    // Step 1 — check Redis
+    if (redis) {
+      const cached = await redis.get(cacheKey);
+      if (cached) {
+        req.tenantId = cached;
+        return next();
+      }
+    }
 
-  if (!tenant) {
-    return next(new AppError(`Unknown tenant for host: ${hostname}`, 400));
+    // Step 2 — check DB
+    const tenant = await findTenantByDomain(domain);
+
+    if (!tenant) {
+      return next(new AppError(`Unknown tenant for host: ${domain}`, 400));
+    }
+
+    // Step 3 — cache it for next time
+    if (redis) {
+      await redis.set(cacheKey, tenant.tenantId, 'EX', TTL.TENANT);
+    }
+
+    req.tenantId = tenant.tenantId;
+    next();
+  } catch (err) {
+    next(err);
   }
-
-  req.tenantId = tenant;
-  next();
 };
 
 module.exports = { tenantMiddleware };
