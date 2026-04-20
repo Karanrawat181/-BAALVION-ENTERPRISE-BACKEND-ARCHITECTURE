@@ -12,6 +12,10 @@ router.use('/users', require('../modules/users/users.routes'));
 // Tenants routes
 router.use('/tenants', require('../modules/tenants/tenants.routes'));
 
+//commerce routes
+router.use('/commerce', require('../domains/commerce/index'));
+
+
 
 router.get('/', (req, res) => {
   res.json({

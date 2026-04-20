@@ -4,8 +4,9 @@
   "description": "this is the backend architecture",
   "main": "index.js",
   "scripts": {
-  "start": "node src/core/server.js",
-  "dev": "nodemon src/core/server.js"
+    "start": "node src/core/server.js",
+    "dev": "nodemon src/core/server.js",
+    "seed": "node scripts/seedTenants.js"
   },
   "repository": {
     "type": "git",

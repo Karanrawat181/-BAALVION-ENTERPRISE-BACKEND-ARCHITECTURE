@@ -1,11 +1,11 @@
 const User = require('./users.model');
 
 const findAllUsers = async (tenantId) => {
-  return await User.find({ tenantId, isDeleted: false }).select('-password');
+  return await User.find({ tenantId, isDeleted: { $ne: true } }).select('-password');
 };
 
 const findUserById = async (id, tenantId) => {
-  return await User.findOne({ _id: id, tenantId, isDeleted: false }).select('-password');
+  return await User.findOne({ _id: id, tenantId, isDeleted: { $ne: true } }).select('-password');
 };
 
 const updateUserById = async (id, tenantId, updates) => {
