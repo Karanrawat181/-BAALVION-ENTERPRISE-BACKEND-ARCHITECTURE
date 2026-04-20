@@ -138,6 +138,11 @@ Base URL: `/api/v1`
 - [ ] Luxury domain
 - [ ] Connect domain
 
+### Coming Soon — RBAC
+- [ ] Role enforcement middleware
+- [ ] Permission guards on routes
+- [ ] Per-tenant role scoping
+
 ### Coming Soon — Infrastructure
 - [ ] Kafka
 - [ ] Elasticsearch
