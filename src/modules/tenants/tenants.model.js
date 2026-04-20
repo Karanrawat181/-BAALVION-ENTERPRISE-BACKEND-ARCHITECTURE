@@ -14,6 +14,11 @@ const tenantSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    description: {
+      type: String,
+      trim: true,
+      default: '',
+    },
     domains: {
       type: [String],
       required: true,

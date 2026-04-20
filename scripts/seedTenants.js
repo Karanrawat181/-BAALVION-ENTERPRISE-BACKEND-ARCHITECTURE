@@ -5,56 +5,67 @@ const tenants = [
   {
     name: 'Core',
     tenantId: 'core',
+    description: 'Main BAALVION platform and API gateway',
     domains: ['baalvion.com', 'api.baalvion.com'],
   },
   {
     name: 'Corporate',
     tenantId: 'corporate',
+    description: 'Corporate identity, group information and branding',
     domains: ['about.baalvion.com', 'baalviongroup.com'],
   },
   {
     name: 'Commerce',
     tenantId: 'commerce',
+    description: 'E-commerce and luxury retail storefronts',
     domains: ['amarisemaisonavenue.com', 'shop.baalvionstack.com'],
   },
   {
     name: 'Careers',
     tenantId: 'careers',
+    description: 'Job listings, applications and hiring pipeline',
     domains: ['jobs.baalvion.com', 'careers.baalvion.com'],
   },
   {
     name: 'Content',
     tenantId: 'content',
+    description: 'Media, editorial, legal and knowledge platforms',
     domains: ['imperialpedia.com', 'market.baalvion.com', 'lawelitenetwork.com'],
   },
   {
     name: 'SaaS',
     tenantId: 'saas',
+    description: 'Software products and developer tools',
     domains: ['controlthemarket.com', 'baalvionstack.com'],
   },
   {
     name: 'Connect',
     tenantId: 'connect',
+    description: 'Professional networking and community platform',
     domains: ['connect.baalvion.com', 'network.baalvion.com'],
   },
   {
     name: 'Investor Relations',
     tenantId: 'investor',
+    description: 'Investor portfolios, reports and relations',
     domains: ['ir.baalvion.com', 'investors.baalviongroup.com'],
   },
   {
     name: 'Mining',
     tenantId: 'mining',
+    description: 'Mining operations and resource management',
     domains: ['mining.baalvion.com', 'mine.baalvionstack.com'],
   },
   {
     name: 'Admin',
     tenantId: 'admin',
+    description: 'Internal admin dashboard and system management',
     domains: ['dashboard.baalvion.com', 'admin.baalvion.com'],
   },
   {
     name: 'Trading',
     tenantId: 'trading',
+    description: 'Market trading, signals and financial tools',
     domains: ['marketunderworld.com', 'trade.baalvion.com'],
   },
 ];
