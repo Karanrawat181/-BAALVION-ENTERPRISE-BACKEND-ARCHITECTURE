@@ -173,6 +173,8 @@ curl -H "Host: amarisemaisonavenue.com" http://localhost:3000/api/v1/commerce/pr
 ```
 
 ## RBAC Hierarchy
+> Coming Soon — roles defined, enforcement pending
+
 - Super Admin
 - Country Admin
 - Organization Admin
