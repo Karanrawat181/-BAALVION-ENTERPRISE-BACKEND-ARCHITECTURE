@@ -14,12 +14,12 @@ const tenantSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
-    domain: {
-      type: String,
+    domains: {
+      type: [String],
       required: true,
-      unique: true,
       lowercase: true,
       trim: true,
+      index: true,
     },
     isActive: {
       type: Boolean,

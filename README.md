@@ -149,20 +149,28 @@ Base URL: `/api/v1`
 ---
 
 ## Multi-Tenant System
-Every request resolved via hostname → Redis cache → MongoDB:
+Every request resolved via hostname → Redis cache → MongoDB. Each tenant owns multiple domains — all data is scoped by `tenantId` so no tenant can access another's data.
 
-| Hostname | Tenant ID |
+| Tenant ID | Domains |
 |---|---|
-| localhost | development |
-| shop.baalvion.com | commerce |
-| ir.baalvion.com | investor |
-| trade.baalvion.com | trading |
-| careers.baalvion.com | careers |
-| mining.baalvion.com | mining |
-| luxury.baalvion.com | luxury |
-| marketing.baalvion.com | marketing |
-| connect.baalvion.com | connect |
-| corp.baalvion.com | corporate |
+| core | baalvion.com, api.baalvion.com |
+| corporate | about.baalvion.com, baalviongroup.com |
+| commerce | amarisemaisonavenue.com, shop.baalvionstack.com |
+| careers | jobs.baalvion.com, careers.baalvion.com |
+| content | imperialpedia.com, market.baalvion.com, lawelitenetwork.com |
+| saas | controlthemarket.com, baalvionstack.com |
+| connect | connect.baalvion.com, network.baalvion.com |
+| investor | ir.baalvion.com, investors.baalviongroup.com |
+| mining | mining.baalvion.com, mine.baalvionstack.com |
+| admin | dashboard.baalvion.com, admin.baalvion.com |
+| trading | marketunderworld.com, trade.baalvion.com |
+
+**Flow:** `Request hostname → findTenantByDomain() → attach req.tenantId → all queries auto-scoped`
+
+**Testing locally:** Set `Host` header in Postman/curl to simulate any domain:
+```bash
+curl -H "Host: amarisemaisonavenue.com" http://localhost:3000/api/v1/commerce/products
+```
 
 ## RBAC Hierarchy
 - Super Admin

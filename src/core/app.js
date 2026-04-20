@@ -23,16 +23,16 @@ app.use(morgan('dev'));
 // Custom logger middleware
 app.use(loggerMiddleware);
 
+// Health check — before tenant middleware so it never needs a valid domain
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', timestamp: new Date() });
+});
+
 // Tenant must be resolved before any route
 app.use(tenantMiddleware);
 
 // Routes
 app.use('/api/v1', router);
-
-// Health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date() });
-});
 
 // Global error handler — must be last
 app.use(errorMiddleware);

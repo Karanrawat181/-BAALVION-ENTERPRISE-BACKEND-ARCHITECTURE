@@ -2,16 +2,61 @@ const mongoose = require('mongoose');
 const { MONGO_URI } = require('../src/config/env');
 
 const tenants = [
-  { name: 'Development', tenantId: 'development', domain: 'localhost' },
-  { name: 'Commerce', tenantId: 'commerce', domain: 'shop.baalvion.com' },
-  { name: 'Investor Relations', tenantId: 'investor', domain: 'ir.baalvion.com' },
-  { name: 'Trading', tenantId: 'trading', domain: 'trade.baalvion.com' },
-  { name: 'Careers', tenantId: 'careers', domain: 'careers.baalvion.com' },
-  { name: 'Mining', tenantId: 'mining', domain: 'mining.baalvion.com' },
-  { name: 'Luxury', tenantId: 'luxury', domain: 'luxury.baalvion.com' },
-  { name: 'Marketing', tenantId: 'marketing', domain: 'marketing.baalvion.com' },
-  { name: 'Connect', tenantId: 'connect', domain: 'connect.baalvion.com' },
-  { name: 'Corporate', tenantId: 'corporate', domain: 'corp.baalvion.com' },
+  {
+    name: 'Core',
+    tenantId: 'core',
+    domains: ['baalvion.com', 'api.baalvion.com'],
+  },
+  {
+    name: 'Corporate',
+    tenantId: 'corporate',
+    domains: ['about.baalvion.com', 'baalviongroup.com'],
+  },
+  {
+    name: 'Commerce',
+    tenantId: 'commerce',
+    domains: ['amarisemaisonavenue.com', 'shop.baalvionstack.com'],
+  },
+  {
+    name: 'Careers',
+    tenantId: 'careers',
+    domains: ['jobs.baalvion.com', 'careers.baalvion.com'],
+  },
+  {
+    name: 'Content',
+    tenantId: 'content',
+    domains: ['imperialpedia.com', 'market.baalvion.com', 'lawelitenetwork.com'],
+  },
+  {
+    name: 'SaaS',
+    tenantId: 'saas',
+    domains: ['controlthemarket.com', 'baalvionstack.com'],
+  },
+  {
+    name: 'Connect',
+    tenantId: 'connect',
+    domains: ['connect.baalvion.com', 'network.baalvion.com'],
+  },
+  {
+    name: 'Investor Relations',
+    tenantId: 'investor',
+    domains: ['ir.baalvion.com', 'investors.baalviongroup.com'],
+  },
+  {
+    name: 'Mining',
+    tenantId: 'mining',
+    domains: ['mining.baalvion.com', 'mine.baalvionstack.com'],
+  },
+  {
+    name: 'Admin',
+    tenantId: 'admin',
+    domains: ['dashboard.baalvion.com', 'admin.baalvion.com'],
+  },
+  {
+    name: 'Trading',
+    tenantId: 'trading',
+    domains: ['marketunderworld.com', 'trade.baalvion.com'],
+  },
 ];
 
 const seed = async () => {

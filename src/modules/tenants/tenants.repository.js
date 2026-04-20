@@ -9,7 +9,7 @@ const findTenantById = async (id) => {
 };
 
 const findTenantByDomain = async (domain) => {
-  return await Tenant.findOne({ domain, isActive: true, isDeleted: false });
+  return await Tenant.findOne({ domains: domain, isActive: true, isDeleted: false });
 };
 
 const findTenantByTenantId = async (tenantId) => {
